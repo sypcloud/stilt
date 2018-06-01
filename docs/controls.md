@@ -114,8 +114,8 @@ Arg             | Description
 `xmx` | grid end longitude, in degrees from -180 to 180
 `ymn` | grid start latitude, in degrees from -180 to 180
 `ymx` | grid end latitude, in degrees from -180 to 180
-`xres` | resolution for longitude grid, in degrees
-`yres` | resolution for latitude grid, in degrees
+`xres` | resolution for longitude grid, in projection units (degrees for lat/lon, meters for other)
+`yres` | resolution for latitude grid, in projection units (degrees for lat/lon, meters for other)
 `hnf_plume` | logical indicating whether to apply a vertical gaussian plume model to rescale the effective dilution depth for particles in the hyper near-field. This acts to scale up the influence of hyper-local fluxes on the receptor. If enabled, requires `varsiwant` to include a minimum of `dens, tlgr, sigw, foot, mlht, samt`. Defaults to TRUE
 `projection` | [proj4](https://proj4.org/usage/quickstart.html) string defining the map projection of the footprint netCDF output
 `smooth_factor` | factor by which to linearly scale footprint smoothing; 0 to disable all smoothing, defaults to 1
