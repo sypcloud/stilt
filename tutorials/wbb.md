@@ -95,7 +95,7 @@ Now that we have the dependencies we need, let's start a new STILT project using
   </div>
 </div>
 
-Then we can initialize our STILT project in our current directory within R using
+Then we can initialize our STILT project in our current directory within R `uataq::stilt_init()`. This function will prompt you through compiling the required binaries.
 
 <div class="terminal">
   <div class="terminal-osx-button"></div>
@@ -103,7 +103,7 @@ Then we can initialize our STILT project in our current directory within R using
   <div class="terminal-osx-button"></div>
   <div class="terminal-lang">R</div>
   <div class="terminal-command">
-    uataq::stilt_init('wbb-tutorial')
+    uataq::stilt_init('wbb_tutorial')
   </div>
 </div>
 
@@ -115,13 +115,13 @@ To ensure everything compiled correctly, check to be sure you can find `hymodelc
   <div class="terminal-osx-button"></div>
   <div class="terminal-lang">bash</div>
   <div class="terminal-command">
-    cd wbb-tutorial
+    cd wbb_tutorial
   </div>
   <div class="terminal-command">
     ls exe
   </div>
   <div class="terminal-return">
-    ASCDATA.CFG CONC.CFG hymodelc LANDUSE.ASC ROUGLEN.ASC
+    ASCDATA.CFG hymodelc LANDUSE.ASC ROUGLEN.ASC
   </div>
 </div>
 
@@ -150,7 +150,7 @@ The minimum we need to simulate the carbon dioxide concentration at WBB is (1) m
 
 which contains
 
-1. `emissions.rds` - 0.002deg hourly emissions inventory
+1. `emissions.rds` - 0.002 deg hourly emissions inventory
 1. `met/` - meteorological data files
 1. `tutorial.r` - a simple script to combine footprints with the emissions inventory and plot a timeseries of the concentrations
 

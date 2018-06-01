@@ -59,57 +59,46 @@ Particle trajectory data is stored in a data frame with columns corresponding wi
 
 Footprints are packaged and saved in a compressed .nc file conforming to the [Climate and Forecast (CF) metadata convention](http://cfconventions.org) with the naming convention `YYYYMMDDHH_LONG_LATI_ZAGL_foot.nc`. This object contains information about the model domain, the grid resolution, and footprint values. This object is typically a three dimensional array with dimensions ordered (*x*, *y*, *z*). However, the object will only have dimensions (*x*, *y*) for time integrated footprints.
 
-<div class="terminal">
-  <div class="terminal-osx-button"></div>
-  <div class="terminal-osx-button"></div>
-  <div class="terminal-osx-button"></div>
-  <div class="terminal-command">
-    ncdump -h 2015061822_-111.980323_40.782561_5_foot.nc
-  </div>
-  <div class="terminal-return">
-    netcdf 2015061822_-111.980323_40.782561_5_foot.nc {<br>
-    dimensions:<br>
-    	lon = 78 ;<br>
-    	lat = 56 ;<br>
-    	time = 10 ;<br>
-      <br>
-    variables:<br>
-    	double lon(lon) ;<br>
-    		lon:units = "degrees_east" ;<br>
-    		lon:long_name = "cell center longitude" ;<br>
-    		lon:standard_name = "longitude" ;<br>
-        <br>
-    	double lat(lat) ;<br>
-    		lat:units = "degrees_north" ;<br>
-    		lat:long_name = "cell center latitude" ;<br>
-    		lat:standard_name = "latitude" ;<br>
-        <br>
-    	double time(time) ;<br>
-    		time:units = "seconds since 1970-01-01 00:00:00" ;<br>
-    		time:long_name = "time" ;<br>
-        time:standard_name = "time" ;<br>
-        time:calendar = "standard" ;<br>
-    		time:timezone = "UTC" ;<br>
-        <br>
-    	float foot(time, lat, lon) ;<br>
-    		foot:units = "ppm (umol-1 m2 s)" ;<br>
-    		foot:FillValue = -1.f ;<br>
-        foot:standard_name = "footprint" ;<br>
-        foot:long_name = "footprint" ;<br>
-        <br>
-        // global attributes:<br>
-    		:crs = "+proj=longlat +ellpsWGS84" ;<br>
-    		:crs_format = "PROJ.4" ;<br>
-    		:conventions = "CF-1.4" ;<br>
-        :documentation = "github.com/uataq/stilt" ;<br>
-    		:title = "STILT Footprint Output" ;<br>
-    }
-  </div>
-</div>
+
+```bash
+ncdump -h 2015061822_-111.980323_40.782561_5_foot.nc
+
+  netcdf 2015061822_-111.980323_40.782561_5_foot.nc {
+  dimensions:
+  	lon = 550 ;
+  	lat = 500 ;
+  	time = 24 ;
+  variables:
+  	double lon(lon) ;
+  		lon:units = "degrees_east" ;
+  		lon:standard_name = "longitude" ;
+  		lon:long_name = "longitude at cell center" ;
+  	double lat(lat) ;
+  		lat:units = "degrees_north" ;
+  		lat:standard_name = "latitude" ;
+  		lat:long_name = "latitude at cell center" ;
+  	double time(time) ;
+  		time:units = "seconds since 1970-01-01 00:00:00Z" ;
+  		time:standard_name = "time" ;
+  		time:long_name = "utc time" ;
+  		time:calendar = "standard" ;
+  	float foot(time, lat, lon) ;
+  		foot:units = "ppm (umol-1 m2 s)" ;
+  		foot:_FillValue = -1.f ;
+  		foot:standard_name = "footprint" ;
+  		foot:long_name = "stilt surface influence footprint" ;
+
+  // global attributes:
+  		:crs = "+proj=longlat" ;
+  		:crs_format = "PROJ.4" ;
+  		:documentation = "github.com/uataq/stilt" ;
+  		:title = "STILT Footprint" ;
+  		:time_created = "2018-05-14 19:49:09" ;
+  }
+```
 
 For those familiar with raster operations, the default output adheres to the [CF-1.4 metadata conventions](http://cfconventions.org/) which is inherently compatible compatible with the R `raster` package. For more information about raster manipulation, the [Raster R package](https://geoscripting-wur.github.io/IntroToRaster/) is a good place to start.
 
-> Variable names were changed from the CF convention naming table for consistency with existing STILT distributions. However, the array structure adheres to the convention.
 
 #### Interfacing with Raster R package
 If `time_integrate = TRUE`, the footprint .nc files can be loaded directly with `raster()`. If `time_integrate = FALSE`, the data can be loaded with `brick()`, which is a three dimensional version of a standard raster. The POSIX time (UTC seconds since 1970-01-01) is stored in the Z dimension and can be easily accessed with `getZ()`.
@@ -117,16 +106,16 @@ If `time_integrate = TRUE`, the footprint .nc files can be loaded directly with 
 Using the [Raster R package](https://geoscripting-wur.github.io/IntroToRaster/), the data can be loaded with `brick()` and is structured as
 
 ```r
-> library(raster)
-> out <- brick('2015070211_-111.835_40.763_7_foot.nc')
-> out
+library(raster)
+out <- brick('2015070211_-111.835_40.763_7_foot.nc')
+out
 # class       : RasterBrick
 # dimensions  : 280, 390, 109200, 5  (nrow, ncol, ncell, nlayers)
 # resolution  : 0.002, 0.002  (x, y)
 # extent      : -112.3, -111.52, 40.39, 40.95  (xmin, xmax, ymin, ymax)
 # ...
-> time <- as.POSIXct(getZ(out), tz = 'UTC', origin = '1970-01-01')
-> str(time)
+time <- as.POSIXct(getZ(out), tz = 'UTC', origin = '1970-01-01')
+str(time)
  # POSIXct[1:5], format: "2015-07-02 05:00:00" "2015-07-02 06:00:00" ...
 ```
 
@@ -135,9 +124,9 @@ Using the [Raster R package](https://geoscripting-wur.github.io/IntroToRaster/),
 Alternatively, the data can be loaded using standard netCDF methods.
 
 ```r
-> library(ncdf4)
-> nc <- # nc_open('2015070211_-111.835_40.763_7_foot.nc')
-> nc
+library(ncdf4)
+nc <- nc_open('2015070211_-111.835_40.763_7_foot.nc')
+nc
 # File 2015070211_-111.835_40.763_7_foot.nc (NC_FORMAT_CLASSIC):
 #      1 variables (excluding dimension variables):
 #         float Footprint[longitude_center,latitude_center,time]   

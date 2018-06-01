@@ -45,6 +45,7 @@ This method uses R to initialize a new project. `stilt_init()` in the Utah Atmos
   </div>
 </div>
 
+
 A STILT project is initialized in plain R code with
 
 <div class="terminal">

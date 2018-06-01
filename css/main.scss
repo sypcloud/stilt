@@ -3,14 +3,13 @@
 
 @charset "utf-8";
 
-$head-primary: #7b4397 ;
-$head-secondary: #dc2430 ;
-$theme-primary: #e04e4b ;
-$theme-secondary: #2b2e3a ;
+$theme-primary: #e04e4b;
+$theme-secondary: #2b2e3a;
 $theme-dark: #222;
 
 // Import partials from _sass/
 @import
         "mixins",
-        "base"
+        "base",
+        "highlight"
 ;

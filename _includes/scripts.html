@@ -13,6 +13,22 @@
     clickClose: true,       // Allows the user to close the modal by clicking the overlay
     closeText: 'Close',     // Text content for the close <a> tag.
     closeClass: '',         // Add additional class(es) to the close <a> tag.
-    showClose: false,        // Shows a (X) icon/link in the top-right corner
+    showClose: false,       // Shows a (X) icon/link in the top-right corner
   };
+</script>
+
+<!-- Email signup form validation -->
+<script type='text/javascript' src='{{'js/mc-validate.js' | relative_url}}'></script>
+<script type='text/javascript'>(
+  function($) {
+    window.fnames = new Array();
+    window.ftypes = new Array();
+    fnames[0]='EMAIL';
+    ftypes[0]='email';
+    fnames[1]='NAME';
+    ftypes[1]='text';
+    fnames[2]='AFFIL';
+    ftypes[2]='text';
+  }(jQuery));
+  var $mcj = jQuery.noConflict(true);
 </script>

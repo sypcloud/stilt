@@ -7,9 +7,11 @@ title: "STILT Home"
 
 {% include head.html %}
 
-<body id="page-top">
+<body>
   <style>
-     /* { background-color: transparent; } */
+    body, html {
+      overflow: hidden;
+    }
     @media (min-width: 768px) {
       .navbar-default {
         background-color: transparent;
@@ -35,15 +37,15 @@ title: "STILT Home"
                 <p>STILT is an open source Lagrangian particle dispersion model.</p>
 
                 <div class="row">
-                  <div class="col-xs-10 col-xs-offset-1">
+                  <div class="col-xs-12">
                     <a href={{"/about.html"|relative_url}} class="btn btn-default btn-xl btn-block">What is STILT</a>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-xs-5 col-xs-offset-1">
+                  <div class="col-xs-6">
                     <a href={{"/docs/"|relative_url}} class="btn btn-outline btn-xl btn-block">Install</a>
                   </div>
-                  <div class="col-xs-5">
+                  <div class="col-xs-6">
                     <a href={{"/tutorials/"|relative_url}} class="btn btn-outline btn-xl btn-block">Tutorials</a>
                   </div>
                 </div>
@@ -59,11 +61,10 @@ title: "STILT Home"
 
   <canvas class="bg"></canvas>
 
-  {% include scripts.html %}
-
   <!-- particle animation -->
   <script src="js/particles.js"></script>
   <script src="js/particle-background.js"></script>
+  {% include scripts.html %}
 </body>
 
 </html>
