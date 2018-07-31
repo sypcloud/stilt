@@ -174,8 +174,10 @@ Arg             | Description
 `veght` | height below which a particle's time spent is tallied; defaults to 0.5, which specifies half of the PBL. Setting <=1.0 specifies a fraction of the boundary layer height, and setting >1.0 specifies a height above ground in meters
 `vscale` | vertical Lagrangian time scale (sec); defaults to 200
 `w_option` | vertical motion calculation method. 0: use vertical velocity from data, 1: isob, 2: isen, 3: dens, 4: sigma; defaults to 0
-`z_top` | top of model domain, in meters above ground level; defaults to 25000.0
 `zicontroltf` | flag that specifies whether to scale the PBL heights in STILT uniformly in the entire model domain; defaults to 0. If set to 1, then STILT looks for a file called "ZICONTROL" that specifies the scaling for the PBL height. The first line indicates the number of hours that the PBL height will be changed, and each subsequent line indicates the scaling factor for that hour
+`ziscale` | manually scale the mixed-layer height, with each element specifying a scaling factor for each simulation hour (ziscale can be of length that is smaller than abs(nhrs). A vector can be passed as a list (e.g. `ziscale <- list(rep(0.8, 24))` scales the mixed layer height to 80% for the first 24 hours of all simulations) or a list of vectors specific to each simulation (e.g. `ziscale <- rep(list(rep(0.8, 24)), nrow(receptors))`)
+`z_top` | top of model domain, in meters above ground level; defaults to 25000.0
+
 
 ### Transport error calculations
 
