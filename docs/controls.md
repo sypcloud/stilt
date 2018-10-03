@@ -28,7 +28,7 @@ Arg       | Description
 
 Arg               | Description
 ------------------|--------------------------------------------------------------
-`t_start/t_end`   | Simulation timing, formatted as `'yyyy-mm-dd HH:MM:SS'` UTC
+`t_start/t_end`   | Receptor time(s) to initialize simulations, formatted as `'yyyy-mm-dd HH:MM:SS'` UTC
 `run_times`       | Hourly simulations spanning `t_start` through `t_end` of length *n*
 
 ### Receptor locations
