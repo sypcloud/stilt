@@ -74,9 +74,10 @@ Arg             | Description
 `n_hours` | Number of hours to run each simulation; negative indicates backward in time
 `numpar` | number of particles to be run; defaults to 200
 `rm_dat`  | Logical indicating whether to delete `PARTICLE.DAT` after each simulation. Default to TRUE to reduce disk space since all of the trajectory information is also stored in `STILT_OUTPUT.rds` alongside the calculated upstream influence footprint
+`run_foot` | Logical indicating whether to produce footprints. If FALSE, `run_trajec` must be TRUE. This can be useful when calculating trajectories separate from footprints
 `run_trajec` | Logical indicating whether to produce new trajectories with `hymodelc`. If FALSE, will try to load the previous trajectory outputs. This is often useful for regridding purposes
 `timeout` | number of seconds to allow hymodelc to complete before sending SIGTERM and moving to the next simulation; defaults to 3600 (1 hour)
-`varsiwant` | character vector of 4-letter hymodelc variables. Options include `NULL` for all variables, or a vector containing a minimum of `'time', 'indx', 'lati', 'long', 'zagl', 'foot'` and optionally containing elements from the following options:
+`varsiwant` | character vector of 4-letter hymodelc variables. Options include a vector containing a minimum of `'time', 'indx', 'lati', 'long', 'zagl', 'foot'` and optionally containing elements from the following options:
 
 - `crai` convective rainfall rate [m/min]
 - `dens` air density [kg/m3]
