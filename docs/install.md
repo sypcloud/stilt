@@ -26,7 +26,7 @@ STILT has been compiled to run on UNIX platforms \(Mac, Linux\). Required softwa
 
 ## Install methods
 
-Two options exist to initialize a new STILT project.
+Three options exist to initialize a new STILT project.
 
 ### R \(preferred\)
 
@@ -106,3 +106,41 @@ R CMD SHLIB r/src/permute.f90
 ```
 
 Finally, edit settings in `r/run_stilt.r`, being sure to specify the project name and the working directory.
+
+
+### Docker \(advanced\)
+
+Building a STILT docker image enables STILT to be run dependency free. This method does not use `run_stilt.r` and `stilt_apply()` related parallelization. Instead, runs are intended to be single-shot by supplying `run_stilt.r` parameters as command arguments when running a container. Parallelization should be accomplished using container oriented tools ([Kubernetes](https://kubernetes.io/), [Docker swarm](https://docs.docker.com/engine/swarm/)).
+
+```bash
+# Clone GitHub repo for R wrapper
+git clone https://github.com/benfasoli/stilt --depth=1 --single-branch
+# Build docker image
+cd stilt
+docker build -t stilt .
+
+# Fetch example met data for testing
+git clone https://github.com/uataq/stilt-tutorials /tmp/stilt-tutorials
+
+# Create host input/output paths
+METDIR=/tmp/stilt-tutorials/01-wbb/met
+OUTDIR=/tmp/stilt-out
+mkdir -p $METDIR $OUTDIR
+docker run \
+  --rm \
+  --mount type=bind,source=$METDIR,destination=/app/met,readonly \
+  --mount type=bind,source=$OUTDIR,destination=/app/out/by-id \
+  stilt \
+  r_run_time=2015-12-10T00:00:00Z \
+  r_lati=40.5 \
+  r_long=-112.0 \
+  r_zagl=5 \
+  met_loc=/app/met \
+  met_file_format=%Y%m%d.%H \
+  xmn=-112.3 \
+  xmx=-111.52 \
+  xres=0.01 \
+  ymn=40.39 \
+  ymx=40.95 \
+  yres=0.01
+```
