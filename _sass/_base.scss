@@ -6,12 +6,18 @@ html {
 body {
   height: 100%;
   width: 100%;
-  font-family: 'Muli', 'Helvetica', 'Arial', 'sans-serif';
-  webkit-tap-highlight-color: $theme-primary;
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  -webkit-tap-highlight-color: $theme-primary;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 200;
   letter-spacing: 1px;
 }
@@ -22,13 +28,13 @@ p {
   margin-bottom: 20px;
 }
 
-
 a {
   -webkit-transition: all 0.35s;
   -moz-transition: all 0.35s;
   transition: all 0.35s;
   color: $theme-primary;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: $theme-primary;
     text-decoration: none;
   }
@@ -48,17 +54,17 @@ hr {
   -webkit-transition: all 0.35s;
   -moz-transition: all 0.35s;
   transition: all 0.35s;
-  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
   font-weight: 200;
   letter-spacing: 1px;
 
   .navbar-header {
     .navbar-brand {
-      font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+      font-size: 16px;
       font-weight: 200;
       letter-spacing: 1px;
       color: white;
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         color: $theme-primary;
       }
     }
@@ -68,7 +74,10 @@ hr {
       border-color: transparent !important;
       font-size: 12px;
       padding: 8px 10px;
-      &:active, &:focus, &:hover, &:focus:hover {
+      &:active,
+      &:focus,
+      &:hover,
+      &:focus:hover {
         color: $theme-primary;
       }
     }
@@ -77,14 +86,16 @@ hr {
   .nav {
     > li {
       > a {
-        font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
         font-weight: normal;
         text-transform: uppercase;
         letter-spacing: 1px;
         font-size: 11px;
         color: white;
         background: transparent !important;
-        &:active, &:focus, &:hover, &:focus:hover {
+        &:active,
+        &:focus,
+        &:hover,
+        &:focus:hover {
           color: $theme-primary;
           text-decoration: none;
         }
@@ -119,18 +130,20 @@ hr {
   }
 }
 
-ul.dropdown-menu, ul.dropdown-menu > li {
+ul.dropdown-menu,
+ul.dropdown-menu > li {
   min-width: 0;
   margin: 5px 0 5px 0;
   background-color: $theme-secondary;
   color: white;
   > a {
-    font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 11px;
     color: white;
-    &:focus, &:hover, &:focus:hover {
+    &:focus,
+    &:hover,
+    &:focus:hover {
       color: $theme-primary;
       background-color: transparent;
     }
@@ -163,7 +176,9 @@ ul.dropdown-menu, ul.dropdown-menu > li {
   display: inline-block;
   text-align: center;
 
-  a:hover, a:active, a:focus {
+  a:hover,
+  a:active,
+  a:focus {
     background: transparent !important;
     color: $theme-primary;
   }
@@ -209,7 +224,6 @@ header {
     }
   }
 }
-
 
 .content {
   padding-top: 50px;
@@ -260,11 +274,10 @@ header {
     img {
       display: block;
       border-radius: 50%;
-      // float: center;
       margin: 10px auto;
       height: 150px;
       width: 150px;
-      @media(min-width: 768px) {
+      @media (min-width: 768px) {
         float: right;
       }
     }
@@ -300,7 +313,7 @@ blockquote {
 .terminal {
   background-color: #2b2e3a;
   border-radius: 5px;
-  box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
   color: #dee0e8;
   font-family: 'Menlo', monospace;
   font-size: 13px;
@@ -312,7 +325,7 @@ blockquote {
     width: 85%;
   }
 
- .terminal-osx-button {
+  .terminal-osx-button {
     border-radius: 50%;
     display: inline-block;
     height: 12px;
@@ -322,13 +335,13 @@ blockquote {
     width: 12px;
   }
   .terminal-osx-button:nth-child(1) {
-    background-color: #F55E57;
+    background-color: #f55e57;
   }
   .terminal-osx-button:nth-child(2) {
-    background-color: #F9BD2F;
+    background-color: #f9bd2f;
   }
   .terminal-osx-button:nth-child(3) {
-    background-color: #3CC940;
+    background-color: #3cc940;
   }
   .terminal-lang {
     display: inline-block;
@@ -374,25 +387,45 @@ footer {
   border: 1px solid;
   border-color: #fff;
   color: #fff;
-  &:hover, &:focus, &:active, &.visited {
+  &:hover,
+  &:focus,
+  &:active,
+  &.visited {
     background-color: $theme-primary;
     border-color: $theme-primary;
     color: #fff;
   }
 }
 
+.btn-outline-light {
+  border: 1px solid;
+  border-color: $theme-primary;
+  color: $theme-primary;
+  &:hover,
+  &:focus,
+  &:active,
+  &.visited {
+    background-color: #fff;
+    border-color: $theme-primary;
+    color: $theme-primary;
+  }
+}
+
 .btn-default {
   color: #fff;
-  border: none;
+  border: 1px solid;
+  border-color: $theme-primary;
   background: $theme-primary;
-  &:hover, &:focus, &:active, &.visited {
+  &:hover,
+  &:focus,
+  &:active,
+  &.visited {
     color: #fff !important;
     background: lighten($theme-primary, 2) !important;
   }
 }
 
 .btn {
-  font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
   text-transform: uppercase;
   letter-spacing: 1px;
   border-radius: 3px;
@@ -404,7 +437,8 @@ footer {
   line-height: 1.3333333;
 }
 
-::-moz-selection, ::selection {
+::-moz-selection,
+::selection {
   color: white;
   text-shadow: none;
   background: #222222;
@@ -412,7 +446,8 @@ footer {
 
 img {
   width: 100%;
-  &::selection, &::-moz-selection {
+  &::selection,
+  &::-moz-selection {
     color: white;
     background: transparent;
   }
