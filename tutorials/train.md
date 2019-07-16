@@ -80,18 +80,19 @@ Now, we need to configure STILT for our example. Begin by opening `r/run_stilt.r
 We'll be assuming that the train completes the transect within an hour and will use the same timestamp for all points, since our emissions estimates are hourly. Set the simulation timing and receptor locations with
 
 ```r
-# Simulation timing, yyyy-mm-dd HH:MM:SS
-t_start <- '2015-12-10 23:00:00'
-t_end <- '2015-12-10 23:00:00'
-run_times <- seq(from = as.POSIXct(t_start, tz='UTC'),
-to = as.POSIXct(t_end, tz='UTC'),
-by = 'hour')
+# Receptor location(s)
+# lati <- 40.5
+# long <- -112.0
+# zagl <- 5
+# 
+# Expand the run times, latitudes, and longitudes to form the unique receptors
+# that are used for each simulation
+# receptors <- expand.grid(run_time = run_times, lati = lati, long = long,
+#                          zagl = zagl, KEEP.OUT.ATTRS = F, stringsAsFactors = F)
 
-# Receptor locations
-r <- readRDS('stilt-tutorials/train/receptors.rds')
-lati <- r$lati
-long <- r$long
-zagl <- 5
+receptors <- readRDS('stilt-tutorials/02-train/receptors.rds')
+receptors$run_time <- as.POSIXct('2015-12-10 23:00:00', tz = 'UTC')
+receptors$zagl <- 5
 ```
 
 Next, we need to tell STILT where to find the meteorological data files for the sample. Set the `met_directory` to
@@ -105,15 +106,17 @@ met_file_format <- '%Y%m%d.%Hz.hrrra'
 Last, let's adjust the footprint grid settings so that it uses the same domain as our emissions inventory. We'll use the same grid and emissions inventory from the previous example. Set the footprint grid settings to
 
 ```r
-# Footprint grid settings
+# Footprint grid settings, must set at least xmn, xmx, ymn, ymx below
+hnf_plume <- T
+projection <- '+proj=longlat'
+smooth_factor <- 1
+time_integrate <- F
 xmn <- -112.30
 xmx <- -111.52
 ymn <- 40.390
 ymx <- 40.95
 xres <- 0.002
 yres <- xres
-smooth_factor <- 1
-time_integrate <- F
 ```
 
 Last, we are now simulating concentrations for 215 receptors which will take significantly longer than the 24 receptors used in the previous example. Let's set STILT to run the simulations across a few parallel threads to speed things up by setting
