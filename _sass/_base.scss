@@ -156,6 +156,9 @@ ul.dropdown-menu > li {
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+.splash {
   background: $theme-secondary;
 }
 
@@ -421,6 +424,7 @@ footer {
   &:active,
   &.visited {
     color: #fff !important;
+    border-color: $theme-primary;
     background: lighten($theme-primary, 2) !important;
   }
 }
