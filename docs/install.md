@@ -16,7 +16,7 @@ STILT has been compiled to run on UNIX platforms \(Mac, Linux\). Required softwa
   * `parallel` package, for parallel computation on a single node
   * `raster` package, for raster-based spatial analysis
   * `rslurm` package, for parallel computation across multiple nodes
-  * `uataq` package, for data manipulation
+  * `uataq` package, for the installation workflow
 * One of the following Fortran compilers (listed by preference/simulation speed)
   * GNU Fortran Compiler \(gfortran\)
   * Portland Group Compiler \(pgf90\)
@@ -108,9 +108,9 @@ R CMD SHLIB r/src/permute.f90
 Finally, edit settings in `r/run_stilt.r`, being sure to specify the project name and the working directory.
 
 
-### Docker \(advanced\)
+### Docker
 
-Building a STILT docker image enables STILT to be run dependency free. This method does not use `run_stilt.r` and `stilt_apply()` related parallelization. Instead, runs are intended to be single-shot by supplying `run_stilt.r` parameters as command arguments when running a container. Parallelization should be accomplished using container oriented tools ([Kubernetes](https://kubernetes.io/), [Docker swarm](https://docs.docker.com/engine/swarm/)).
+Building a STILT docker image enables STILT to be run dependency free. This method does not use `run_stilt.r` and `stilt_apply()` related parallelization. Instead, runs are intended to be single-shot by supplying `run_stilt.r` parameters as command arguments when running a container. Parallelization should be accomplished using container orchestration tools ([Kubernetes](https://kubernetes.io/), [Docker swarm](https://docs.docker.com/engine/swarm/)).
 
 ```bash
 # Clone GitHub repo for R wrapper

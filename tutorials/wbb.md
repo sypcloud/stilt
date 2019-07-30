@@ -30,20 +30,7 @@ We need R version 3.2.5 or higher, which you can find in the output from
 
 > If R is not found or the version is too old, you'll need to update R on your system before continuing.
 
-STILT requires several R packages as helpers for file input/output, data manipulation, and parallel execution. We can install the dependencies in R with
-
-<div class="terminal">
-  <div class="terminal-osx-button"></div>
-  <div class="terminal-osx-button"></div>
-  <div class="terminal-osx-button"></div>
-  <div class="terminal-lang">R</div>
-  <div class="terminal-command">
-    install.packages(c('devtools', 'dplyr', 'ncdf4', 'parallel', 'raster', 'rslurm'))
-  </div>
-  <div class="terminal-return">
-    ...
-  </div>
-</div>
+STILT requires several R packages as helpers for file input/output, data manipulation, and parallel execution. These will be installed if they are not already available during the first STILT run.
 
 To compile the `hymodelc` executable, the makefile will default to searching for gfortran. We can check if gfortran is installed with
 
@@ -90,6 +77,9 @@ Now that we have the dependencies we need, let's start a new STILT project using
   <div class="terminal-osx-button"></div>
   <div class="terminal-osx-button"></div>
   <div class="terminal-lang">R</div>
+  <div class="terminal-command">
+    if (!require('devtools')) install.packages('devtools')
+  </div>
   <div class="terminal-command">
     devtools::install_github('benfasoli/uataq')
   </div>
