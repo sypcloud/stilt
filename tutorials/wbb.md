@@ -165,15 +165,7 @@ long <- -111.847672
 zagl <- 25
 ```
 
-Next, we need to tell STILT where to find the meteorological data files for the sample. Set the `met_directory` to
-
-```r
-# Meteorological data input
-met_directory <- file.path(stilt_wd, 'stilt-tutorials', '01-wbb', 'met')
-met_file_format <- '%Y%m%d.%Hz.hrrra'
-```
-
-Last, let's adjust the footprint grid settings so that it uses the same domain as our emissions inventory. Set the footprint grid settings to
+Next, let's adjust the footprint grid settings so that it uses the same domain as our emissions inventory. Set the footprint grid settings to
 
 ```r
 # Footprint grid settings
@@ -183,6 +175,14 @@ ymn <- 40.390
 ymx <- 40.95
 xres <- 0.002
 yres <- xres
+```
+
+Last, we need to tell STILT where to find the meteorological data files for the sample. Set the `met_directory` to
+
+```r
+# Meteorological data input
+met_directory <- file.path(stilt_wd, 'stilt-tutorials', '01-wbb', 'met')
+met_file_format <- '%Y%m%d.%Hz.hrrra'
 ```
 
 That's it! We're all set to run the model. From the base directory of our STILT project, run `Rscript r/run_stilt.r` and wait a few minutes for the simulations to complete.
