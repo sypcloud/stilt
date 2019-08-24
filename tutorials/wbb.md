@@ -223,13 +223,13 @@ To convolve the footprints with emissions estimates,
   </div>
 </div>
 
-which will output `timeseries.png` to the current directory showing the modeled concentrations
+which will output `timeseries.html` to the current directory showing the modeled concentrations
 
 <div class="text-center">
   <img style="max-width:400px; margin: auto;" src="{{"/img/wbb-tutorial-timeseries.png"|relative_url}}">
 </div>
 
-as well as maps for the average footprint (`average_footprint.png`) and average contribution of fluxes over space (`average_contribution.png`).
+as well as maps for the average footprint (`average_footprint.html`) and average contribution of fluxes over space (`average_contribution.html`).
 <div class="row">
   <div class="col-sm-6">
     <img src="{{"/img/wbb-tutorial-average-footprint.jpg"|relative_url}}">
